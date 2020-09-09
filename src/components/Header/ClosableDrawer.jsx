@@ -55,9 +55,9 @@ const ClosableDrawer = (props) => {
     };
 
     const [filters, setFilters] = useState([
-        {func: selectMenu, label: "すべて", id: 'all', value: "/"},
-        {func: selectMenu, label: "メンズ", id: 'male', value: "/?gender=male"},
-        {func: selectMenu, label: "レディース", id: 'female', value: "?gender=female"},
+        {func: selectMenu, label: "すべて", id: 'all', value: "/ec-app/"},
+        {func: selectMenu, label: "メンズ", id: 'male', value: "/ec-app/?gender=male"},
+        {func: selectMenu, label: "レディース", id: 'female', value: "/ec-app/?gender=female"},
     ])
 
     const menus = [
@@ -73,7 +73,7 @@ const ClosableDrawer = (props) => {
                 snapshots.forEach(snapshot => {
                     const category = snapshot.data();
                     list.push(
-                        {func: selectMenu, label: category.name, id: category.id, value: `/?category=${category.id}`},
+                        {func: selectMenu, label: category.name, id: category.id, value: `/ec-app/?category=${category.id}`},
                     )
                 })
                 setFilters(prevState => [...prevState, ...list]);
