@@ -8,3 +8,4 @@ export {default as SignUp} from './SignUp';
 export {default as Reset} from './Reset';
 export {default as OrderConfirm} from './OrderConfirm';
 export {default as OrderHistory} from './OrderHistory';
+export {default as OrderComplete} from './OrderComplete';

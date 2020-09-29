@@ -22,7 +22,7 @@ const LikeList = () => {
     const productInLike = getProductsInLike(selector);
 
     const backToHome = () => {
-        dispatch(push('/'))
+        dispatch(push('/ec-app'))
     };
 
     return(

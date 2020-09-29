@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react' ;
 import { makeStyles } from '@material-ui/styles'
 import AppBar from '@material-ui/core/AppBar';
 import ToolBar from '@material-ui/core/Toolbar';
-import logo from '../../assets/img/logo.png';
+import portfolio from '../../assets/img/portfolio.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSignedIn } from '../../redux/users/selector';
 import { push } from 'connected-react-router';
@@ -46,7 +46,7 @@ const Header = () => {
             <AppBar potition="fixed" className={classes.menuBar}>
                 <ToolBar className={classes.toolBar}>
                     <img
-                        src={logo} alt="logo" width="128px"
+                        src={portfolio} alt="portfolio" width="128px"
                         onClick={() => dispatch(push('/ec-app'))}
                     />
                     {isSignedIn && (

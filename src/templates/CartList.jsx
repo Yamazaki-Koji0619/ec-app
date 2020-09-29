@@ -26,7 +26,7 @@ const CartList = () => {
     },[dispatch]);
 
     const backToHome = useCallback(() => {
-        dispatch(push('/'))
+        dispatch(push('/ec-app'))
     },[dispatch]);
 
     return(
