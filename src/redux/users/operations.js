@@ -118,7 +118,7 @@ export const signIn = (email, password) => {
                                 username: data.username
                             }))
 
-                            dispatch(push('/'))
+                            dispatch(push('/ec-app'))
                         })
                 }
             })
@@ -156,7 +156,7 @@ export const signUp = (username, email, password, confirmpassword) => {
 
                     db.collection('users').doc(uid).set(userInitialData)
                         .then(() => {
-                            dispatch(push('/'))
+                            dispatch(push('/ec-app'))
                         })
                 }
             })
