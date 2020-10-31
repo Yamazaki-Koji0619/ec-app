@@ -73,7 +73,7 @@ const ClosableDrawer = (props) => {
                 snapshots.forEach(snapshot => {
                     const category = snapshot.data();
                     list.push(
-                        {func: selectMenu, label: category.name, id: category.id, value: `/ec-app/?category=${category.id}`},
+                        {func: selectMenu, label: category.name, id: category.id, value: `/?category=${category.id}`},
                     )
                 })
                 setFilters(prevState => [...prevState, ...list]);
@@ -101,7 +101,7 @@ const ClosableDrawer = (props) => {
                             fullWidth={false} label={"キーワード入力"} multiline={false}
                             onChange={inputKeyword} required={false} rows={1} value={keyword} type={"text"}
                         />
-                        <IconButton onClick={() => dispatch(push('/'))} >
+                        <IconButton onClick={() => dispatch(push('/ec-app'))} >
                             <SearchIcon />
                         </IconButton>
                     </div>
