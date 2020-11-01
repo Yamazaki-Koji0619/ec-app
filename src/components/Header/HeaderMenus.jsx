@@ -73,10 +73,13 @@ const HeaderMenus = (props) => {
         return () => unsubscribe()
     },[]);
 
+    console.log(Object.keys(productsInCart).length);
+    console.log(productsInLike.length);
+
     return(
         <>
             <IconButton onClick={() => dispatch(push('/cart'))}>
-                <Badge badgeContent={productsInCart.length} color="secondary">
+                <Badge badgeContent={Object.keys(productsInCart).length} color="secondary">
                     <ShoppingCartIcon />
                 </Badge>
             </IconButton>

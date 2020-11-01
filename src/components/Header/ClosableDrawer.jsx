@@ -73,7 +73,7 @@ const ClosableDrawer = (props) => {
                 snapshots.forEach(snapshot => {
                     const category = snapshot.data();
                     list.push(
-                        {func: selectMenu, label: category.name, id: category.id, value: `/?category=${category.id}`},
+                        {func: selectMenu, label: category.name, id: category.id, value: `/ec-app/?category=${category.id}`},
                     )
                 })
                 setFilters(prevState => [...prevState, ...list]);
