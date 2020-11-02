@@ -17,7 +17,7 @@ const HeaderMenus = (props) => {
     let productsInCart = getProductsInCart(selector);
     let productsInLike = getProductsInLike(selector); 
 
-    useEffect(() => {
+    useEffect(async() => {
         const unsubscribe = db.collection('users').doc(uid).collection('cart')
             .onSnapshot(snapshots => {
                 snapshots.docChanges().forEach(change => {
@@ -73,13 +73,10 @@ const HeaderMenus = (props) => {
         return () => unsubscribe()
     },[]);
 
-    console.log(Object.keys(productsInCart).length);
-    console.log(productsInLike.length);
-
     return(
         <>
             <IconButton onClick={() => dispatch(push('/cart'))}>
-                <Badge badgeContent={Object.keys(productsInCart).length} color="secondary">
+                <Badge badgeContent={productsInCart.length} color="secondary">
                     <ShoppingCartIcon />
                 </Badge>
             </IconButton>
