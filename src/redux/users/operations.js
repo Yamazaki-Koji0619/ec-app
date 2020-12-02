@@ -165,10 +165,36 @@ export const signUp = (username, email, password, confirmpassword) => {
 
 export const signOut = () => {
     return async(dispatch) => {
-        auth.signOut()
+        await auth.signOut()
             .then(() => {
                 dispatch(signOutAction())
                 dispatch(push('/signin'))
             })
+            .catch( (error)=>{
+                console.log(`ログアウト時にエラーが発生しました (${error})`);
+            });
     }
+    // return async (dispatch, getState) => {
+    //     dispatch(showLoadingAction("Sign out..."));
+    //     const uid = getState().users.uid
+
+    //     // Delete products from the user's cart
+    //     await usersRef.doc(uid).collection('cart').get()
+    //         .then(snapshots => {
+    //             snapshots.forEach(snapshot => {
+    //                 usersRef.doc(uid).collection('cart').doc(snapshot.id).delete()
+    //             })
+    //         });
+
+    //     // Sign out with Firebase Authentication
+    //     auth.signOut().then(() => {
+    //         dispatch(signOutAction());
+    //         dispatch(initProductsAction())
+    //         dispatch(hideLoadingAction());
+    //         dispatch(push('/signin'));
+    //     }).catch(() => {
+    //         dispatch(hideLoadingAction());
+    //         throw new Error('ログアウトに失敗しました。')
+    //     })
+    // }
 }
