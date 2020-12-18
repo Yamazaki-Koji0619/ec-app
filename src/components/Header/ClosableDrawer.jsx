@@ -66,18 +66,34 @@ const ClosableDrawer = (props) => {
         {func: selectMenu, label: "プロフィール",　icon: <PersonIcon />, id: "profile", value: "/user/mypage"},
     ];
 
-    useEffect(() => {
-        db.collection('categories').orderBy('order', "asc").get()
+    const fetchMenuData = (itemType) => {
+        console.log(itemType);
+        db.collection(itemType).orderBy('order', 'asc').get()
             .then(snapshots => {
                 const list = [];
                 snapshots.forEach(snapshot => {
-                    const category = snapshot.data();
+                    const getItem = snapshot.data();
                     list.push(
-                        {func: selectMenu, label: category.name, id: category.id, value: `/ec-app/?category=${category.id}`},
+                        {func: selectMenu, label: getItem.name, id: getItem.id, value: `/ec-app/?${itemType}=${getItem.id}`},
                     )
                 })
                 setFilters(prevState => [...prevState, ...list]);
             })
+    };
+
+    useEffect(() => {
+        // db.collection('categories').orderBy('order', 'asc').get()
+        //     .then(snapshots => {
+        //         const list = [];
+        //         snapshots.forEach(snapshot => {
+        //             const category = snapshot.data();
+        //             list.push(
+        //                 {func: selectMenu, label: category.name, id: category.id, value: `/ec-app/?category=${category.id}`},
+        //             )
+        //         })
+        //         setFilters(prevState => [...prevState, ...list]);
+        //     })
+        fetchMenuData('categories')
     },[])
 
     useEffect(() => {
