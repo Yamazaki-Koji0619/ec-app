@@ -18,6 +18,7 @@ import { push } from 'connected-react-router';
 import { signOut } from '../../redux/users/operations';
 import { fetchKeyword } from '../../redux/products/operations';
 import { db } from '../../firebase/index';
+// import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     drawer: {
@@ -67,7 +68,6 @@ const ClosableDrawer = (props) => {
     ];
 
     const fetchMenuData = (itemType) => {
-        console.log(itemType);
         db.collection(itemType).orderBy('order', 'asc').get()
             .then(snapshots => {
                 const list = [];
