@@ -101,21 +101,21 @@ const ClosableDrawer = (props) => {
         // fetchMenuData('categories')
     },[])
 
-    useEffect(() => {
-        db.collection('season').get()
-            .then(snapshots => {
-                const list = [];
-                snapshots.forEach(snapshot => {
-                    const season = snapshot.data();
-                    list.push(
-                        {func: selectMenu, label: season.name, id: season.id, value: `/ec-app/?season=${season.id}`},
-                    )
-                })
-                setFilters(prevState => [...prevState, ...list]);
-                console.log(filters);
-            })
-        // fetchMenuData('categories')
-    },[])
+    // useEffect(() => {
+    //     db.collection('season').get()
+    //         .then(snapshots => {
+    //             const list = [];
+    //             snapshots.forEach(snapshot => {
+    //                 const season = snapshot.data();
+    //                 list.push(
+    //                     {func: selectMenu, label: season.name, id: season.id, value: `/ec-app/?season=${season.id}`},
+    //                 )
+    //             })
+    //             setFilters(prevState => [...prevState, ...list]);
+    //             console.log(filters);
+    //         })
+    //     // fetchMenuData('categories')
+    // },[])
 
     useEffect(() => {
         dispatch(fetchKeyword(keyword))

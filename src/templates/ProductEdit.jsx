@@ -19,6 +19,7 @@ const ProductEdit = () => {
           [category, setCategory] = useState(""),
           [categories, setCategories] =useState([]),
           [gender, setGender] = useState(""),
+          [level, setLevel] = useState(""),
           [price, setPrice] = useState(""),
           [images, setImages] = useState([]),
           [sizes, setSizes] = useState([]);
@@ -40,6 +41,14 @@ const ProductEdit = () => {
         {id:"male", name:"メンズ"},
         {id:"female", name:"レディース"}
     ];
+
+    const levels = [
+        {id: "easy", name: "簡単"},
+        {id: "little easy", name: "少し簡単"},
+        {id: "normal", name: "普通"},
+        {id: "little difficult", name: "少し難しい"},
+        {id: "difficult", name: "難しい"}
+    ]
 
     useEffect(() => {
        if(id !== ""){
@@ -90,6 +99,9 @@ const ProductEdit = () => {
                 />
                 <SelectBox
                     label={"性別"} required={true} options={genders} select={setGender} value={gender}
+                />
+                <SelectBox
+                    label={"難易度"} required={true} options={levels} select={setLevel} value={level}
                 />
                 <TextInput
                     fullWidth={true} label={"価格"} multiline={false} required={true}
