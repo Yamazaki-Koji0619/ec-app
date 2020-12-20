@@ -67,33 +67,54 @@ const ClosableDrawer = (props) => {
         {func: selectMenu, label: "プロフィール",　icon: <PersonIcon />, id: "profile", value: "/user/mypage"},
     ];
 
-    const fetchMenuData = (itemType) => {
-        db.collection(itemType).orderBy('order', 'asc').get()
+    // const fetchMenuData = (itemType) => {
+    //     db.collection(itemType).orderBy('order', 'asc').get()
+    //         .then(snapshots => {
+    //             const list = [];
+    //             snapshots.forEach(snapshot => {
+    //                 const getItem = snapshot.data();
+    //                 console.log(getItem);
+    //                 list.push(
+    //                     {func: selectMenu, label: getItem.name, id: getItem.id, value: `/ec-app/?${itemType}=${getItem.id}`},
+    //                 )
+    //                 console.log(list);
+    //             })
+    //             setFilters(prevState => [...prevState, ...list]);
+    //             console.log(filters);
+    //         })
+    //         console.log(filters);        
+    // };
+
+    useEffect(() => {
+        db.collection('categories').orderBy('order', 'asc').get()
             .then(snapshots => {
                 const list = [];
                 snapshots.forEach(snapshot => {
-                    const getItem = snapshot.data();
+                    const category = snapshot.data();
                     list.push(
-                        {func: selectMenu, label: getItem.name, id: getItem.id, value: `/ec-app/?${itemType}=${getItem.id}`},
+                        {func: selectMenu, label: category.name, id: category.id, value: `/ec-app/?category=${category.id}`},
                     )
                 })
                 setFilters(prevState => [...prevState, ...list]);
+                console.log(filters);
             })
-    };
+        // fetchMenuData('categories')
+    },[])
 
     useEffect(() => {
-        // db.collection('categories').orderBy('order', 'asc').get()
-        //     .then(snapshots => {
-        //         const list = [];
-        //         snapshots.forEach(snapshot => {
-        //             const category = snapshot.data();
-        //             list.push(
-        //                 {func: selectMenu, label: category.name, id: category.id, value: `/ec-app/?category=${category.id}`},
-        //             )
-        //         })
-        //         setFilters(prevState => [...prevState, ...list]);
-        //     })
-        fetchMenuData('categories')
+        db.collection('season').get()
+            .then(snapshots => {
+                const list = [];
+                snapshots.forEach(snapshot => {
+                    const season = snapshot.data();
+                    list.push(
+                        {func: selectMenu, label: season.name, id: season.id, value: `/ec-app/?season=${season.id}`},
+                    )
+                })
+                setFilters(prevState => [...prevState, ...list]);
+                console.log(filters);
+            })
+        // fetchMenuData('categories')
     },[])
 
     useEffect(() => {

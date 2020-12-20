@@ -27,12 +27,15 @@ export const fetchProducts = (gender, category) => {
         query = (gender !== "") ? query.where('gender', '==', gender) : query;
         query = (category !== "") ? query.where('category', '==', category) : query;
 
+        console.log(query);
+
         query.get()
             .then(snapshots => {
                 const productList = []
                 snapshots.forEach(snapshot => {
                     const product = snapshot.data();
                     productList.push(product)
+                    console.log(productList)
                 })
                 dispatch(fetchProductsAction(productList))
             })
