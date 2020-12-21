@@ -152,6 +152,31 @@
     display: flex;
 }
 
+.s-text-level {
+    color: white;
+    width: 20%;
+    border-right: 1px solid white;
+}
+
+.s-easy_color {
+    background-color: green;
+}
+
+.s-little-easy_color {
+    background-color: greenyellow;
+}
+
+.s-normal_color {
+    background-color: yellow;
+}
+
+.s-little-diff_color {
+    background-color: orange;
+}
+.s-diff_color {
+    background-color: red;
+}
+
 
 @media screen and (min-width: 576px) {
     /*********** Module Spacer ***********/

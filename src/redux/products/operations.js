@@ -160,7 +160,7 @@ export const saveProduct = (id, name, discription, category, gender, level, pric
 
         return productsRef.doc(id).set(data, {merge: true})
             .then(() => {
-                dispatch(push('/'))
+                dispatch(push('/ec-app'))
             }).catch((error) => {
                 throw new Error(error)
             })
