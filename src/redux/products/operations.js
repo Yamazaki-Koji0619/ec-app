@@ -135,7 +135,7 @@ export const orderProduct = (productInCart, amount) => {
     }
 }
 
-export const saveProduct = (id, name, discription, category, gender, price, images, sizes) => {
+export const saveProduct = (id, name, discription, category, gender, level, price, images, sizes) => {
     return async(dispatch) => {
         const timestamp = FirebaseTimestamp.now()
 
@@ -143,6 +143,7 @@ export const saveProduct = (id, name, discription, category, gender, price, imag
             category: category,
             discription: discription,
             gender: gender,
+            level: level,
             images: images,
             name: name,
             price: parseInt(price, 10),

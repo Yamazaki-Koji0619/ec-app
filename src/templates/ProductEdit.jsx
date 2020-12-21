@@ -101,7 +101,7 @@ const ProductEdit = () => {
                     label={"性別"} required={true} options={genders} select={setGender} value={gender}
                 />
                 <SelectBox
-                    label={"難易度"} required={true} options={levels} select={setLevel} value={level}
+                    label={"着こなしやすさ(合わせやすさ)"} required={true} options={levels} select={setLevel} value={level}
                 />
                 <TextInput
                     fullWidth={true} label={"価格"} multiline={false} required={true}
@@ -112,7 +112,7 @@ const ProductEdit = () => {
                 <div className="module-spacer--small" />
                 <div className="center">
                     <PrimaryButton
-                        label={"商品情報を保存"} onClick={() => dispatch(saveProduct(id, name, description, category, gender, price, images,sizes))}
+                        label={"商品情報を保存"} onClick={() => dispatch(saveProduct(id, name, description, category, gender,　level, price, images,sizes))}
                     />
                 </div>
             </div>
