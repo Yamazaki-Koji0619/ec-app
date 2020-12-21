@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/styles';
 import HTMLReactParser from 'html-react-parser';
 import { ImageSwiper, SizeTable } from '../components/Products';
 import { addProductToCart, addProductToLike } from '../redux/users/operations';
+import { SetLevel } from '../components/Products';
 
 const useStyles = makeStyles((theme) => ({
     sliderBox: {
@@ -61,7 +62,7 @@ const ProductDetail = () => {
                 const data = doc.data()
                 setProduct(data)
             })
-    },[])
+    },[]);
 
     const addProduct = useCallback((selectedSize) => {
         const timestamp = FirebaseTimestamp.now();
@@ -69,6 +70,7 @@ const ProductDetail = () => {
             added_at: timestamp,
             discription: product.discription,
             gender: product.gender,
+            level: product.level,
             images: product.images,
             name: product.name,
             price: product.price,
@@ -76,7 +78,7 @@ const ProductDetail = () => {
             quantity: 1,
             size: selectedSize,
         }))
-    },[product, dispatch])
+    },[product, dispatch]);
 
     const addProductLike = useCallback((selectedSize) => {
         const timestamp = FirebaseTimestamp.now();
@@ -84,6 +86,7 @@ const ProductDetail = () => {
             added_at: timestamp,
             discription: product.discription,
             gender: product.gender,
+            level: product.level,
             images: product.images,
             name: product.name,
             price: product.price,
@@ -91,7 +94,7 @@ const ProductDetail = () => {
             quantity: 1,
             size: selectedSize,
         }))
-    },[product, dispatch])
+    },[product, dispatch]);
 
     return(
         <section className="c-section-wrapin">
@@ -105,6 +108,9 @@ const ProductDetail = () => {
                         <p className={classes.price}>{product.price.toLocaleString()}</p>
                         <div className="module-spacer--small" />
                         <SizeTable addProduct={addProduct} addProductLike={addProductLike} sizes={product.sizes} />
+                        <div className="module-spacer--small" />
+                        {/* <div>着こなしやすさ(合わせやすさ):{product.level}</div> */}
+                        <SetLevel level={product.level} />
                         <div className="module-spacer--small" />
                         <p>{returnCodeToBr(product.discription)}</p>
                     </div>

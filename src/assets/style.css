@@ -147,6 +147,12 @@
     display: none;
 }
 
+/* SetLevel */
+.s-display-flex {
+    display: flex;
+}
+
+
 @media screen and (min-width: 576px) {
     /*********** Module Spacer ***********/
     .module-spacer--extra-extra-small {
