@@ -158,16 +158,20 @@
     border-right: 1px solid white;
 }
 
+.s-text-level > span{
+    padding-left: 5px;
+}
+
 .s-easy_color {
     background-color: green;
 }
 
 .s-little-easy_color {
-    background-color: greenyellow;
+    background-color: lightgreen;
 }
 
 .s-normal_color {
-    background-color: yellow;
+    background-color: #F0F000;
 }
 
 .s-little-diff_color {

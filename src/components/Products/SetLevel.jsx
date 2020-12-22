@@ -11,7 +11,7 @@ const SetLevel = (props) => {
             
             setLelveBar(
                 <div className="s-display-flex">
-                    <div className="s-text-level s-easy_color">easy</div>
+                    <div className="s-text-level s-easy_color"><span>easy</span></div>
                 </div>
             );
         }else if(props.level === 'little easy'){
@@ -19,7 +19,7 @@ const SetLevel = (props) => {
 
             setLelveBar(
                 <div className="s-display-flex">
-                    <div className="s-text-level s-little-easy_color">little easy</div>
+                    <div className="s-text-level s-little-easy_color"><span>little easy</span></div>
                     <div className="s-text-level s-little-easy_color"></div>
                 </div>
             );
@@ -28,7 +28,7 @@ const SetLevel = (props) => {
 
             setLelveBar(
                 <div className="s-display-flex">
-                    <div className="s-text-level s-normal_color">normal</div>
+                    <div className="s-text-level s-normal_color"><span>normal</span></div>
                     <div className="s-text-level s-normal_color"></div>
                     <div className="s-text-level s-normal_color"></div>
                 </div>
@@ -38,7 +38,7 @@ const SetLevel = (props) => {
 
             setLelveBar(
                 <div className="s-display-flex">
-                    <div className="s-text-level s-little-diff_color">little-diff</div>
+                    <div className="s-text-level s-little-diff_color"><span>little-diff</span></div>
                     <div className="s-text-level s-little-diff_color"></div>
                     <div className="s-text-level s-little-diff_color"></div>
                     <div className="s-text-level s-little-diff_color"></div>
@@ -49,7 +49,7 @@ const SetLevel = (props) => {
 
             setLelveBar(
                 <div className="s-display-flex">
-                    <div className="s-text-level s-diff_color">difficult</div>
+                    <div className="s-text-level s-diff_color"><span>difficult</span></div>
                     <div className="s-text-level s-diff_color"></div>
                     <div className="s-text-level s-diff_color"></div>
                     <div className="s-text-level s-diff_color"></div>
@@ -61,7 +61,7 @@ const SetLevel = (props) => {
 
     return(
         <>
-            <div>着こなしやすさ：{DifficultyLevel}</div>
+            <div>着こなしやすさ ： {DifficultyLevel}</div>
             {LelveBar}
         </>
     )
