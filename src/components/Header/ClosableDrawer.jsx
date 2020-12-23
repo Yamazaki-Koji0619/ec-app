@@ -18,7 +18,6 @@ import { push } from 'connected-react-router';
 import { signOut } from '../../redux/users/operations';
 import { fetchKeyword } from '../../redux/products/operations';
 import { db } from '../../firebase/index';
-// import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     drawer: {
@@ -37,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: 32
     }
 }))
-
 
 const ClosableDrawer = (props) => {
     const classes = useStyles();
@@ -66,24 +64,6 @@ const ClosableDrawer = (props) => {
         {func: selectMenu, label: "注文履歴",　icon: <HistoryIcon />, id: "history", value: "/order/history"},
         {func: selectMenu, label: "プロフィール",　icon: <PersonIcon />, id: "profile", value: "/user/mypage"},
     ];
-
-    // const fetchMenuData = (itemType) => {
-    //     db.collection(itemType).orderBy('order', 'asc').get()
-    //         .then(snapshots => {
-    //             const list = [];
-    //             snapshots.forEach(snapshot => {
-    //                 const getItem = snapshot.data();
-    //                 console.log(getItem);
-    //                 list.push(
-    //                     {func: selectMenu, label: getItem.name, id: getItem.id, value: `/ec-app/?${itemType}=${getItem.id}`},
-    //                 )
-    //                 console.log(list);
-    //             })
-    //             setFilters(prevState => [...prevState, ...list]);
-    //             console.log(filters);
-    //         })
-    //         console.log(filters);        
-    // };
 
     useEffect(() => {
         db.collection('categories').orderBy('order', 'asc').get()

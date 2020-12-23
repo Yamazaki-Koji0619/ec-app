@@ -7,7 +7,7 @@ const SetLevel = (props) => {
 
     useEffect(() => {
         if(props.level === 'easy'){
-            setDifficultyLevel("簡単");
+            setDifficultyLevel("初級者向け");
             
             setLelveBar(
                 <div className="s-display-flex">
@@ -15,7 +15,7 @@ const SetLevel = (props) => {
                 </div>
             );
         }else if(props.level === 'little easy'){
-            setDifficultyLevel("少し簡単");
+            setDifficultyLevel("初級・中級者向け");
 
             setLelveBar(
                 <div className="s-display-flex">
@@ -24,7 +24,7 @@ const SetLevel = (props) => {
                 </div>
             );
         }else if(props.level === 'normal'){
-            setDifficultyLevel("普通");
+            setDifficultyLevel("中級者向け");
 
             setLelveBar(
                 <div className="s-display-flex">
@@ -34,7 +34,7 @@ const SetLevel = (props) => {
                 </div>
             );
         }else if(props.level === 'little difficult'){
-            setDifficultyLevel("少し難しい");
+            setDifficultyLevel("中級・上級者向け");
 
             setLelveBar(
                 <div className="s-display-flex">
@@ -45,7 +45,7 @@ const SetLevel = (props) => {
                 </div>
             );
         }else if(props.level === 'difficult'){
-            setDifficultyLevel("難しい");
+            setDifficultyLevel("上級者向け");
 
             setLelveBar(
                 <div className="s-display-flex">

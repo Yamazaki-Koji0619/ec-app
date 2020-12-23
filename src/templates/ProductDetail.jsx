@@ -109,7 +109,6 @@ const ProductDetail = () => {
                         <div className="module-spacer--small" />
                         <SizeTable addProduct={addProduct} addProductLike={addProductLike} sizes={product.sizes} />
                         <div className="module-spacer--small" />
-                        {/* <div>着こなしやすさ(合わせやすさ):{product.level}</div> */}
                         <SetLevel level={product.level} />
                         <div className="module-spacer--small" />
                         <p>{returnCodeToBr(product.discription)}</p>
