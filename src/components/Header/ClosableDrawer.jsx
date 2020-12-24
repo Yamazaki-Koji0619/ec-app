@@ -43,6 +43,7 @@ const ClosableDrawer = (props) => {
     const dispatch = useDispatch();
 
     const [keyword, setKeyword] = useState("");
+    const [detail, setDetail] = useState(false);
 
     const inputKeyword = useCallback((event) => {
         setKeyword(event.target.value)
@@ -52,6 +53,13 @@ const ClosableDrawer = (props) => {
         dispatch(push(path))
         props.onClose(event)
     };
+
+    const handleDrawerToggle = useCallback((event) => {
+        if(event.type === 'keydown' && (event.key === 'Tab' || event.key ==='Shift')){
+            return;
+        }
+        setDetail(!detail)
+    },[setDetail, detail]);
 
     const [filters, setFilters] = useState([
         {func: selectMenu, label: "すべて", id: 'all', value: "/ec-app/"},
