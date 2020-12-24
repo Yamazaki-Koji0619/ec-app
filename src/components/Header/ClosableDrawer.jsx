@@ -78,7 +78,6 @@ const ClosableDrawer = (props) => {
                 setFilters(prevState => [...prevState, ...list]);
                 console.log(filters);
             })
-        // fetchMenuData('categories')
     },[])
 
     // useEffect(() => {
