@@ -35,7 +35,6 @@ export const fetchProducts = (gender, category) => {
                 snapshots.forEach(snapshot => {
                     const product = snapshot.data();
                     productList.push(product)
-                    console.log(productList)
                 })
                 dispatch(fetchProductsAction(productList))
             })

@@ -18,6 +18,7 @@ import { push } from 'connected-react-router';
 import { signOut } from '../../redux/users/operations';
 import { fetchKeyword } from '../../redux/products/operations';
 import { db } from '../../firebase/index';
+import { AddSelectDrawer } from './index';
 
 const useStyles = makeStyles((theme) => ({
     drawer: {
@@ -43,7 +44,8 @@ const ClosableDrawer = (props) => {
     const dispatch = useDispatch();
 
     const [keyword, setKeyword] = useState("");
-    const [detail, setDetail] = useState(true);
+    const [detail, setDetail] = useState(false);
+    const [clickType, setClickType] = useState("");
 
     const inputKeyword = useCallback((event) => {
         setKeyword(event.target.value)
@@ -54,39 +56,41 @@ const ClosableDrawer = (props) => {
         props.onClose(event)
     };
 
-    const handleDrawerToggle = useCallback((event) => {
-        if(event.type === 'keydown' && (event.key === 'Tab' || event.key ==='Shift')){
-            return;
-        }
+    const handleDrawerToggle = useCallback((type) => {
+        setClickType(type)
         setDetail(!detail)
     },[setDetail, detail]);
-
-    const [filters, setFilters] = useState([
-        {func: selectMenu, label: "すべて", id: 'all', value: "/ec-app/"},
-        {func: selectMenu, label: "メンズ", id: 'male', value: "/ec-app/?gender=male"},
-        {func: selectMenu, label: "レディース", id: 'female', value: "/ec-app/?gender=female"},
-    ])
-
+    
     const menus = [
         {func: selectMenu, label: "商品登録",　icon: <AddCircleIcon />, id: "register", value: "/product/edit"},
         {func: selectMenu, label: "注文履歴",　icon: <HistoryIcon />, id: "history", value: "/order/history"},
         {func: selectMenu, label: "プロフィール",　icon: <PersonIcon />, id: "profile", value: "/user/mypage"},
     ];
 
-    useEffect(() => {
-        db.collection('categories').orderBy('order', 'asc').get()
-            .then(snapshots => {
-                const list = [];
-                snapshots.forEach(snapshot => {
-                    const category = snapshot.data();
-                    list.push(
-                        {func: handleDrawerToggle, label: category.name, id: category.id, value: `/ec-app/?category=${category.id}`},
-                    )
-                })
-                setFilters(prevState => [...prevState, ...list]);
-                console.log(filters);
-            })
-    },[])
+    const [filters, setFilters] = useState([
+        // {func: selectMenu, label: "すべて", id: 'all', value: "/ec-app/"},
+        // {func: selectMenu, label: "メンズ", id: 'male', value: "/ec-app/?gender=male"},
+        // {func: selectMenu, label: "レディース", id: 'female', value: "/ec-app/?gender=female"},
+        {func: handleDrawerToggle, label: "カテゴリー", id: 'categories'},
+        {func: handleDrawerToggle, label: "難易度", id: 'level'},
+        {func: handleDrawerToggle, label: "値段", id: 'price'},
+    ])
+
+
+    // useEffect(() => {
+    //     db.collection('categories').orderBy('order', 'asc').get()
+    //         .then(snapshots => {
+    //             const list = [];
+    //             snapshots.forEach(snapshot => {
+    //                 const category = snapshot.data();
+    //                 list.push(
+    //                     {func: handleDrawerToggle, label: category.name, id: category.id, value: `/ec-app/?category=${category.id}`},
+    //                 )
+    //             })
+    //             setFilters(prevState => [...prevState, ...list]);
+    //             console.log(filters);
+    //         })
+    // },[])
 
     useEffect(() => {
         dispatch(fetchKeyword(keyword))
@@ -138,12 +142,14 @@ const ClosableDrawer = (props) => {
                             </ListItem>
                         ))} */}
                         {detail ? (
+                            <AddSelectDrawer type={clickType} detail={detail} close={setDetail} />
+                        ) : (
                             filters.map(filter => (
-                                <ListItem button key={filter.id} onClick={(e) => filter.func(e, filter.value)}>
+                                <ListItem button key={filter.id} onClick={() => filter.func(filter.id)}>
                                     <ListItemText primary={filter.label} />
                                 </ListItem>
                             ))
-                        ) : (<div></div>)}
+                        )}
                     </List>
                 </div>
             </Drawer>

@@ -4,7 +4,11 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import IconButton from '@material-ui/core/IconButton';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { makeStyles } from '@material-ui/styles';
+import { push } from 'connected-react-router';
+import { useDispatch } from 'react-redux';
 import { db } from '../../firebase/index';
 
 const useStyles = makeStyles((theme) => ({
@@ -27,6 +31,10 @@ const useStyles = makeStyles((theme) => ({
 
 const AddSelectDrwer = (props) => {
 
+    const classes = useStyles();
+    const {container} = props;
+    const dispatch = useDispatch();
+
     const type = props.type;
     const [detailItem, setDetailItem] = useState([]);
 
@@ -34,6 +42,10 @@ const AddSelectDrwer = (props) => {
         dispatch(push(path))
         props.onClose(event)
     };
+
+    const back = () => {
+        props.close(!props.detail)
+    }
 
     useEffect(() => {
         db.collection(type).orderBy('order', 'asc').get()
@@ -52,24 +64,17 @@ const AddSelectDrwer = (props) => {
 
     return(
         <>
-            <div>AddSelectDrwer</div>
-            <Drawer
-                container={container}
-                variant="temporary"
-                anchor="right"
-                open={props.detail}
-                onClose={(e) => {props.onClose(e)}}
-                classes={{paper: classes.drawerPaper}}
-                ModalProps={{keepMounted: true}}
-            >
-                <List>
-                    {detailItem.map(item => (
-                        <ListItem button key={item.id} onClick={(e) => item.func(e, item.value)}>
-                            <ListItemText primary={item.label} />
-                        </ListItem>
-                    ))}
-                </List>
-            </Drawer>
+            <List>
+                {detailItem.map(item => (
+                    <ListItem button key={item.id} onClick={(e) => item.func(e, item.value)}>
+                        <ListItemText primary={item.label} />
+                    </ListItem>
+                ))}
+            </List>
+            <IconButton onClick={() => back()} >
+                <ArrowBackIcon />
+                <div>戻る</div>
+            </IconButton>
         </>
     )
 };
