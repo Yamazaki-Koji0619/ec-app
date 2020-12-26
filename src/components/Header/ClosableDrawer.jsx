@@ -43,7 +43,7 @@ const ClosableDrawer = (props) => {
     const dispatch = useDispatch();
 
     const [keyword, setKeyword] = useState("");
-    const [detail, setDetail] = useState(false);
+    const [detail, setDetail] = useState(true);
 
     const inputKeyword = useCallback((event) => {
         setKeyword(event.target.value)
@@ -80,29 +80,13 @@ const ClosableDrawer = (props) => {
                 snapshots.forEach(snapshot => {
                     const category = snapshot.data();
                     list.push(
-                        {func: selectMenu, label: category.name, id: category.id, value: `/ec-app/?category=${category.id}`},
+                        {func: handleDrawerToggle, label: category.name, id: category.id, value: `/ec-app/?category=${category.id}`},
                     )
                 })
                 setFilters(prevState => [...prevState, ...list]);
                 console.log(filters);
             })
     },[])
-
-    // useEffect(() => {
-    //     db.collection('season').get()
-    //         .then(snapshots => {
-    //             const list = [];
-    //             snapshots.forEach(snapshot => {
-    //                 const season = snapshot.data();
-    //                 list.push(
-    //                     {func: selectMenu, label: season.name, id: season.id, value: `/ec-app/?season=${season.id}`},
-    //                 )
-    //             })
-    //             setFilters(prevState => [...prevState, ...list]);
-    //             console.log(filters);
-    //         })
-    //     // fetchMenuData('categories')
-    // },[])
 
     useEffect(() => {
         dispatch(fetchKeyword(keyword))
@@ -148,11 +132,18 @@ const ClosableDrawer = (props) => {
                     </List>
                     <Divider />
                     <List>
-                        {filters.map(filter => (
+                        {/* {filters.map(filter => (
                             <ListItem button key={filter.id} onClick={(e) => filter.func(e, filter.value)}>
                                 <ListItemText primary={filter.label} />
                             </ListItem>
-                        ))}
+                        ))} */}
+                        {detail ? (
+                            filters.map(filter => (
+                                <ListItem button key={filter.id} onClick={(e) => filter.func(e, filter.value)}>
+                                    <ListItemText primary={filter.label} />
+                                </ListItem>
+                            ))
+                        ) : (<div></div>)}
                     </List>
                 </div>
             </Drawer>
