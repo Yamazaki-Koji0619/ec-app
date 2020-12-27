@@ -3,6 +3,7 @@ import { ProductCard } from '../components/Products';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../redux/products/operations';
 import { getProducts, getKeyword } from '../redux/products/selector';
+import { useState } from 'react';
 
 const ProductList = () => {
     const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const ProductList = () => {
 
     const query = selector.router.location.search;
     const gender = /^\?gender=/.test(query) ? query.split('?gender=')[1] : "";
-    const category = /^\?category=/.test(query) ? query.split('?category=')[1] : "";
+    const category = /^\?categories=/.test(query) ? query.split('?categories=')[1] : "";
 
     useEffect(() => {
         dispatch(fetchProducts(gender, category))

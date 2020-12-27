@@ -40,7 +40,7 @@ const AddSelectDrwer = (props) => {
 
     const selectMenu = (event, path) => {
         dispatch(push(path))
-        props.onClose(event)
+        // props.onClose(event)
     };
 
     const back = () => {

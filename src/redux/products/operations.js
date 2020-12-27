@@ -27,8 +27,6 @@ export const fetchProducts = (gender, category) => {
         query = (gender !== "") ? query.where('gender', '==', gender) : query;
         query = (category !== "") ? query.where('category', '==', category) : query;
 
-        console.log(query);
-
         query.get()
             .then(snapshots => {
                 const productList = []
