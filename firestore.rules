@@ -30,7 +30,7 @@ service cloud.firestore {
       allow write: if request.auth.uid != null;
     }
 
-    match /season/{seasonId} {
+    match /level/{levelId} {
       allow read: if request.auth.uid != null;
       allow write: if request.auth.uid != null;
     }

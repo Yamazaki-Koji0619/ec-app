@@ -64,13 +64,11 @@ const AddSelectDrwer = (props) => {
 
     return(
         <>
-            <List>
-                {detailItem.map(item => (
-                    <ListItem button key={item.id} onClick={(e) => item.func(e, item.value)}>
-                        <ListItemText primary={item.label} />
-                    </ListItem>
-                ))}
-            </List>
+            {detailItem.map(item => (
+                <ListItem button key={item.id} onClick={(e) => item.func(e, item.value)}>
+                    <ListItemText primary={item.label} />
+                </ListItem>
+            ))}
             <IconButton onClick={() => back()} >
                 <ArrowBackIcon />
                 <div>戻る</div>

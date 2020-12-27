@@ -68,7 +68,7 @@ const ClosableDrawer = (props) => {
     ];
 
     const [filters, setFilters] = useState([
-        // {func: selectMenu, label: "すべて", id: 'all', value: "/ec-app/"},
+        {func: selectMenu, label: "すべて", id: 'all', value: "/ec-app/"},
         // {func: selectMenu, label: "メンズ", id: 'male', value: "/ec-app/?gender=male"},
         // {func: selectMenu, label: "レディース", id: 'female', value: "/ec-app/?gender=female"},
         {func: handleDrawerToggle, label: "カテゴリー", id: 'categories'},
@@ -136,11 +136,6 @@ const ClosableDrawer = (props) => {
                     </List>
                     <Divider />
                     <List>
-                        {/* {filters.map(filter => (
-                            <ListItem button key={filter.id} onClick={(e) => filter.func(e, filter.value)}>
-                                <ListItemText primary={filter.label} />
-                            </ListItem>
-                        ))} */}
                         {detail ? (
                             <AddSelectDrawer type={clickType} detail={detail} close={setDetail} />
                         ) : (

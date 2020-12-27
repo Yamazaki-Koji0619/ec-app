@@ -5,6 +5,7 @@ import { saveProduct } from '../redux/products/operations';
 import ImageArea from '../components/Products/imageArea'; 
 import { db } from '../firebase/index';
 import SetSizeArea from '../components/Products/SetSizeArea';
+import { SetLevel } from '../components/Products';
 
 const ProductEdit = () => {
     const dispatch = useDispatch();
@@ -44,9 +45,9 @@ const ProductEdit = () => {
 
     const levels = [
         {id: "easy", name: "簡単"},
-        {id: "little easy", name: "少し簡単"},
+        {id: "little_easy", name: "少し簡単"},
         {id: "normal", name: "普通"},
-        {id: "little difficult", name: "少し難しい"},
+        {id: "little_difficult", name: "少し難しい"},
         {id: "difficult", name: "難しい"}
     ]
 
@@ -60,6 +61,7 @@ const ProductEdit = () => {
                     setDiscription(data.discription);
                     setCategory(data.category);
                     setGender(data.gender);
+                    setLevel(data.level);
                     setPrice(data.price);
                     setSizes(data.sizes);
                 })
