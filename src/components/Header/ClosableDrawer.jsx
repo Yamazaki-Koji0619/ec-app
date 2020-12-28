@@ -76,22 +76,6 @@ const ClosableDrawer = (props) => {
         {func: handleDrawerToggle, label: "値段", id: 'price'},
     ])
 
-
-    // useEffect(() => {
-    //     db.collection('categories').orderBy('order', 'asc').get()
-    //         .then(snapshots => {
-    //             const list = [];
-    //             snapshots.forEach(snapshot => {
-    //                 const category = snapshot.data();
-    //                 list.push(
-    //                     {func: handleDrawerToggle, label: category.name, id: category.id, value: `/ec-app/?category=${category.id}`},
-    //                 )
-    //             })
-    //             setFilters(prevState => [...prevState, ...list]);
-    //             console.log(filters);
-    //         })
-    // },[])
-
     useEffect(() => {
         dispatch(fetchKeyword(keyword))
     },[keyword])

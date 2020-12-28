@@ -21,12 +21,14 @@ export const fetchKeyword = (keyword) => {
     }
 }
 
-export const fetchProducts = (gender, category, level) => {
+export const fetchProducts = (gender, category, level, price) => {
+    console.log(price)
     return async(dispatch) => {
         let query = productsRef.orderBy('updated_at','desc');
         query = (gender !== "") ? query.where('gender', '==', gender) : query;
         query = (category !== "") ? query.where('category', '==', category) : query;
         query = (level !== "") ? query.where('level', '==', level) : query;
+        query = (price !== "") ? productsRef.where('price', '<=', price) : query;
 
         query.get()
             .then(snapshots => {

@@ -34,5 +34,10 @@ service cloud.firestore {
       allow read: if request.auth.uid != null;
       allow write: if request.auth.uid != null;
     }
+
+    match /price/{priceId} {
+      allow read: if request.auth.uid != null;
+      allow write: if request.auth.uid != null;
+    }
   }
 }

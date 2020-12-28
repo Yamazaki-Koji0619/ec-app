@@ -14,9 +14,11 @@ const ProductList = () => {
     const gender = /^\?gender=/.test(query) ? query.split('?gender=')[1] : "";
     const category = /^\?categories=/.test(query) ? query.split('?categories=')[1] : "";
     const level = /^\?level=/.test(query) ? query.split('?level=')[1] : "";
+    const price = /^\?price=/.test(query) ? Number(query.split('?price=')[1]) : "";
 
     useEffect(() => {
-        dispatch(fetchProducts(gender, category, level))
+        console.log(price)
+        dispatch(fetchProducts(gender, category, level, price))
     },[query, dispatch]);
 
     const filters = products.filter((product) => {
