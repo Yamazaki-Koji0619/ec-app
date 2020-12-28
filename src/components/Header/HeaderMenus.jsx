@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { db } from '../../firebase/index';
 import { fetchProductsInCart, fetchProductsInLike } from '../../redux/users/operations';
 import { push } from 'connected-react-router';
+import { GenderSwitch } from './index';
 
 const HeaderMenus = (props) => {
     const dispatch = useDispatch();
@@ -75,6 +76,7 @@ const HeaderMenus = (props) => {
 
     return(
         <>
+            <GenderSwitch />
             <IconButton onClick={() => dispatch(push('/cart'))}>
                 <Badge badgeContent={productsInCart.length} color="secondary">
                     <ShoppingCartIcon />

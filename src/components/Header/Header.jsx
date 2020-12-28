@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react' ;
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@material-ui/styles';
 import AppBar from '@material-ui/core/AppBar';
 import ToolBar from '@material-ui/core/Toolbar';
 import portfolio from '../../assets/img/portfolio.png';
@@ -22,9 +22,11 @@ const useStyles = makeStyles({
         width: "100%"
     },
     iconButtons: {
-        margin: "0 0 0 auto"
+        margin: "0 0 0 auto",
+        display: "flex",
+        alignItems: "center",
     }
-})
+});
 
 const Header = () => {
     const classes = useStyles();

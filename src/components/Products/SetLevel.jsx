@@ -14,7 +14,7 @@ const SetLevel = (props) => {
                     <div className="s-text-level s-easy_color"><span>easy</span></div>
                 </div>
             );
-        }else if(props.level === 'little easy'){
+        }else if(props.level === 'little_easy'){
             setDifficultyLevel("初級・中級者向け");
 
             setLelveBar(
@@ -33,7 +33,7 @@ const SetLevel = (props) => {
                     <div className="s-text-level s-normal_color"></div>
                 </div>
             );
-        }else if(props.level === 'little difficult'){
+        }else if(props.level === 'little_difficult'){
             setDifficultyLevel("中級・上級者向け");
 
             setLelveBar(

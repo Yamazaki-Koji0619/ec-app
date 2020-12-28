@@ -103,6 +103,11 @@
     height: auto;
 }
 
+/*********** Header ***********/
+.h-header__img {
+    width: 20px;
+}
+
 /*********** Footer ***********/
 .l-footer {
     display: flex;
