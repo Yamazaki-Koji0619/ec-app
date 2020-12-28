@@ -21,8 +21,28 @@ export const fetchKeyword = (keyword) => {
     }
 }
 
+export const fetchGenderProducts = (gender) => {
+    console.log(gender);
+    return async(dispatch) => {
+        let query = productsRef.orderBy('updated_at','desc');
+        console.log(gender);
+        query = (gender !== "") ? query.where('gender', '==', gender) : query;
+        console.log(gender);
+
+        query.get()
+            .then(snapshots => {
+                console.log("ここまでこれる？");
+                const productList = []
+                snapshots.forEach(snapshot => {
+                    const product = snapshot.data();
+                    productList.push(product)
+                })
+                dispatch(fetchProductsAction(productList))
+            })
+    }
+}
+
 export const fetchProducts = (gender, category, level, price) => {
-    console.log(price)
     return async(dispatch) => {
         let query = productsRef.orderBy('updated_at','desc');
         query = (gender !== "") ? query.where('gender', '==', gender) : query;
