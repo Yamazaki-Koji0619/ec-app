@@ -25,13 +25,10 @@ export const fetchGenderProducts = (gender) => {
     console.log(gender);
     return async(dispatch) => {
         let query = productsRef.orderBy('updated_at','desc');
-        console.log(gender);
         query = (gender !== "") ? query.where('gender', '==', gender) : query;
-        console.log(gender);
 
         query.get()
             .then(snapshots => {
-                console.log("ここまでこれる？");
                 const productList = []
                 snapshots.forEach(snapshot => {
                     const product = snapshot.data();
