@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
@@ -35,6 +32,7 @@ const AddSelectDrwer = (props) => {
     const {container} = props;
     const dispatch = useDispatch();
 
+    const gender = props.gender;
     const type = props.type;
     const [detailItem, setDetailItem] = useState([]);
 
@@ -53,9 +51,15 @@ const AddSelectDrwer = (props) => {
             const list = [];
             snapshots.forEach(snapshot => {
                 const data = snapshot.data();
-                list.push(
-                    {func: selectMenu, label: data.name, id: data.id, value: `/ec-app/?${type}=${data.id}`},
-                )
+                if(gender === ""){
+                    list.push(
+                        {func: selectMenu, label: data.name, id: data.id, value: `/ec-app/?${type}=${data.id}`},
+                    )
+                }else{
+                    list.push(
+                        {func: selectMenu, label: data.name, id: data.id, value: `/ec-app/?gender=${gender}/?${type}=${data.id}`},
+                    )
+                }
             })
             setDetailItem(() => [...list]);
             console.log(detailItem);

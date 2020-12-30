@@ -33,7 +33,6 @@ const GenderSwitch = () => {
     };
 
     const selectGender = (gender) => {
-        console.log(gender)
         fetchGenderProducts(gender)
         if(gender == ""){
             dispatch(push("/ec-app/"))

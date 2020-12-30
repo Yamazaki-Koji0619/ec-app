@@ -13,7 +13,7 @@ import HistoryIcon from '@material-ui/icons/History';
 import PersonIcon from '@material-ui/icons/Person';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { TextInput } from '../UIkit/index';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { push } from 'connected-react-router';
 import { signOut } from '../../redux/users/operations';
 import { fetchKeyword } from '../../redux/products/operations';
@@ -42,6 +42,12 @@ const ClosableDrawer = (props) => {
     const classes = useStyles();
     const {container} = props;
     const dispatch = useDispatch();
+    const selector = useSelector((state) => state);
+
+    const query = selector.router.location.search;
+    // const gender = query.substr(8);
+    const gender = !query.indexOf("?gender=") ? query.split('?gender=')[1].split('/?')[0] : "";
+    console.log(gender);
 
     const [keyword, setKeyword] = useState("");
     const [detail, setDetail] = useState(false);
@@ -69,8 +75,6 @@ const ClosableDrawer = (props) => {
 
     const [filters, setFilters] = useState([
         {func: selectMenu, label: "すべて", id: 'all', value: "/ec-app/"},
-        // {func: selectMenu, label: "メンズ", id: 'male', value: "/ec-app/?gender=male"},
-        // {func: selectMenu, label: "レディース", id: 'female', value: "/ec-app/?gender=female"},
         {func: handleDrawerToggle, label: "カテゴリー", id: 'categories'},
         {func: handleDrawerToggle, label: "難易度", id: 'level'},
         {func: handleDrawerToggle, label: "値段", id: 'price'},
@@ -121,7 +125,7 @@ const ClosableDrawer = (props) => {
                     <Divider />
                     <List>
                         {detail ? (
-                            <AddSelectDrawer type={clickType} detail={detail} close={setDetail} />
+                            <AddSelectDrawer type={clickType} gender={gender} detail={detail} close={setDetail} />
                         ) : (
                             filters.map(filter => (
                                 <ListItem button key={filter.id} onClick={() => filter.func(filter.id)}>
