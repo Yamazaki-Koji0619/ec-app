@@ -46,7 +46,6 @@ const ClosableDrawer = (props) => {
 
     const query = selector.router.location.search;
     const gender = !query.indexOf("?gender=") ? query.split('?gender=')[1].split('/?')[0] : "";
-    console.log(gender);
 
     const [keyword, setKeyword] = useState("");
     const [detail, setDetail] = useState(false);

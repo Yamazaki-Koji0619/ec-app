@@ -64,7 +64,7 @@ const AddSelectDrwer = (props) => {
             setDetailItem(() => [...list]);
             console.log(detailItem);
         })
-    }, []);
+    }, [gender]);
 
     return(
         <>
