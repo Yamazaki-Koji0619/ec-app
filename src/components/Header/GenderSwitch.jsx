@@ -6,7 +6,7 @@ import man_woman from '../../assets/img/man_woman.png';
 import man from '../../assets/img/man.png';
 import woman from '../../assets/img/woman.png';
 import { push } from 'connected-react-router';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchGenderProducts } from '../../redux/products/operations';
 
 const useStyles = makeStyles((theme) => ({
@@ -20,13 +20,19 @@ const useStyles = makeStyles((theme) => ({
     padding_around: {
         padding: "8px",
     },
+    notclick: {
+        padding: "8px",
+        pointerEvents: "none",
+    }
 }))
 
 const GenderSwitch = () => {
 
     const classes = useStyles();
     const dispatch = useDispatch();
-    const [alignment, setAlignment] = useState('center');
+    const selector = useSelector((state) => state);
+    const query = selector.router.location.search;
+    const [alignment, setAlignment] = useState('');
 
     const handleAlignment = (event, newAlignment) => {
         setAlignment(newAlignment);
@@ -40,6 +46,16 @@ const GenderSwitch = () => {
             dispatch(push(`/ec-app/?gender=${gender}`))
         }
     };
+
+    useEffect(() => {
+        if(!query.indexOf("?gender=male")){
+            setAlignment("left")
+        }else if(!query.indexOf("?gender=female")){
+            setAlignment("right")
+        }else{
+            setAlignment("center")
+        }
+    }, [query]);
 
     useEffect(() => {
         if(alignment === "left"){
@@ -63,14 +79,14 @@ const GenderSwitch = () => {
             onChange={handleAlignment}
             aria-label="text alignment"
             className={classes.checBox}
-            >
-            <ToggleButton className={classes.padding_around} value="left" aria-label="left aligned" onClick={() => selectGender("male")}>
+        >
+            <ToggleButton className={alignment === "left" ? classes.notclick : classes.padding_around} value="left" aria-label="left aligned" onClick={() => selectGender("male")}>
                 <img className="h-header__img" src={man} alt=""/>
             </ToggleButton>
-            <ToggleButton className={classes.padding_around} value="center" aria-label="centered" onClick={() => selectGender("")}>
+            <ToggleButton className={alignment === "center" ? classes.notclick : classes.padding_around} value="center" aria-label="centered" onClick={() => selectGender("")}>
                 <img className="h-header__img" src={man_woman} alt=""/>
             </ToggleButton>
-            <ToggleButton className={classes.padding_around} value="right" aria-label="right aligned" onClick={() => selectGender("female")}>
+            <ToggleButton className={alignment === "right" ? classes.notclick : classes.padding_around} value="right" aria-label="right aligned" onClick={() => selectGender("female")}>
                 <img className="h-header__img" src={woman} alt=""/>
             </ToggleButton>
         </ToggleButtonGroup>
