@@ -13,18 +13,11 @@ const ProductList = () => {
     const query = selector.router.location.search; //URL取得
     const maleorfemale = !query.indexOf("?gender=") ? query.split('?gender=')[1].split('/?')[0] : ""; //性別の情報取得
     const notGenderQuery = !query.indexOf("?gender=") ? `?gender=${maleorfemale}/` : ""; //gender部分のURL取得
-    console.log(query);
-    console.log(notGenderQuery);
 
     const gender = /^\?gender=/.test(query) ? query.split('?gender=')[1].split('/?')[0] : "";
-    const test = !query.indexOf(notGenderQuery + "?categories=") ? true : false;
     const category = !query.indexOf(notGenderQuery + "?categories=") ? query.split(`${notGenderQuery}?categories=`)[1] : "";
     const level = /^\?level=/.test(query) ? query.split('?level=')[1] : "";
     const price = /^\?price=/.test(query) ? Number(query.split('?price=')[1]) : "";
-    console.log(query);
-    console.log(gender);
-    console.log(category);
-    console.log(notGenderQuery + "?categories=");
 
     useEffect(() => {
         dispatch(fetchProducts(gender, category, level, price))
