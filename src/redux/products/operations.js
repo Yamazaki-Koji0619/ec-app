@@ -41,10 +41,10 @@ export const fetchGenderProducts = (gender) => {
 export const fetchProducts = (gender, category, level, price) => {
     return async(dispatch) => {
         let query = productsRef.orderBy('updated_at','desc');
+        query = (price !== "") ? productsRef.where('price', '<=', price) : query;
         query = (gender !== "") ? query.where('gender', '==', gender) : query;
         query = (category !== "") ? query.where('category', '==', category) : query;
         query = (level !== "") ? query.where('level', '==', level) : query;
-        query = (price !== "") ? productsRef.where('price', '<=', price) : query;
 
         query.get()
             .then(snapshots => {
@@ -57,22 +57,6 @@ export const fetchProducts = (gender, category, level, price) => {
             })
     }
 }
-
-// export const fetchSearchProducts = () => {
-//     return async(dispatch) => {
-//         let query = productsRef.orderBy('updated_at','desc');
-
-//         query.get()
-//             .then(snapshots => {
-//                 const productList = []
-//                 snapshots.forEach(snapshot => {
-//                     const product = snapshot.data();
-//                     productList.push(product)
-//                 })
-//                 dispatch(fetchSearchProductsAction(productList))
-//             })
-//     }
-// }
 
 export const orderProduct = (productInCart, amount) => {
     return async(dispatch, getState) => {

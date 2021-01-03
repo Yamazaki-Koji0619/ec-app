@@ -16,8 +16,10 @@ const ProductList = () => {
 
     const gender = /^\?gender=/.test(query) ? query.split('?gender=')[1].split('/?')[0] : "";
     const category = !query.indexOf(notGenderQuery + "?categories=") ? query.split(`${notGenderQuery}?categories=`)[1] : "";
-    const level = /^\?level=/.test(query) ? query.split('?level=')[1] : "";
-    const price = /^\?price=/.test(query) ? Number(query.split('?price=')[1]) : "";
+    const level = !query.indexOf(notGenderQuery + "?level=") ? query.split(`${notGenderQuery}?level=`)[1] : "";
+    const price = !query.indexOf(notGenderQuery + "?price=") ? Number(query.split(`${notGenderQuery}?price=`)[1]) : "";
+
+    console.log(price);
 
     useEffect(() => {
         dispatch(fetchProducts(gender, category, level, price))
