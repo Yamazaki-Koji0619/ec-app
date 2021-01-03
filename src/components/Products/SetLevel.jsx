@@ -6,20 +6,20 @@ const SetLevel = (props) => {
     const [LelveBar, setLelveBar] = useState();
 
     useEffect(() => {
-        if(props.level === 'easy'){
+        if(props.level === 'very_easy'){
             setDifficultyLevel("初級者向け");
             
             setLelveBar(
                 <div className="s-display-flex">
-                    <div className="s-text-level s-easy_color"><span>easy</span></div>
+                    <div className="s-text-level s-easy_color"><span>Very easy</span></div>
                 </div>
             );
-        }else if(props.level === 'little_easy'){
+        }else if(props.level === 'easy'){
             setDifficultyLevel("初級・中級者向け");
 
             setLelveBar(
                 <div className="s-display-flex">
-                    <div className="s-text-level s-little-easy_color"><span>little-easy</span></div>
+                    <div className="s-text-level s-little-easy_color"><span>Easy</span></div>
                     <div className="s-text-level s-little-easy_color"></div>
                 </div>
             );
@@ -28,28 +28,28 @@ const SetLevel = (props) => {
 
             setLelveBar(
                 <div className="s-display-flex">
-                    <div className="s-text-level s-normal_color"><span>normal</span></div>
+                    <div className="s-text-level s-normal_color"><span>Normal</span></div>
                     <div className="s-text-level s-normal_color"></div>
                     <div className="s-text-level s-normal_color"></div>
                 </div>
             );
-        }else if(props.level === 'little_difficult'){
+        }else if(props.level === 'hard'){
             setDifficultyLevel("中級・上級者向け");
 
             setLelveBar(
                 <div className="s-display-flex">
-                    <div className="s-text-level s-little-diff_color"><span>little-diff</span></div>
+                    <div className="s-text-level s-little-diff_color"><span>Hard</span></div>
                     <div className="s-text-level s-little-diff_color"></div>
                     <div className="s-text-level s-little-diff_color"></div>
                     <div className="s-text-level s-little-diff_color"></div>
                 </div>
             );
-        }else if(props.level === 'difficult'){
+        }else if(props.level === 'very_hard'){
             setDifficultyLevel("上級者向け");
 
             setLelveBar(
                 <div className="s-display-flex">
-                    <div className="s-text-level s-diff_color"><span>difficult</span></div>
+                    <div className="s-text-level s-diff_color"><span>Very Hard</span></div>
                     <div className="s-text-level s-diff_color"></div>
                     <div className="s-text-level s-diff_color"></div>
                     <div className="s-text-level s-diff_color"></div>

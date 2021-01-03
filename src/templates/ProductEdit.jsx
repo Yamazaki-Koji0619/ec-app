@@ -44,11 +44,11 @@ const ProductEdit = () => {
     ];
 
     const levels = [
+        {id: "very_easy", name: "非常に簡単"},
         {id: "easy", name: "簡単"},
-        {id: "little_easy", name: "少し簡単"},
         {id: "normal", name: "普通"},
-        {id: "little_difficult", name: "少し難しい"},
-        {id: "difficult", name: "難しい"}
+        {id: "hard", name: "難しい"},
+        {id: "very_hard", name: "非常に難しい"}
     ]
 
     useEffect(() => {
