@@ -11,7 +11,7 @@ const SetLevel = (props) => {
             
             setLelveBar(
                 <div className="s-display-flex">
-                    <div className="s-text-level s-easy_color"><span>Very easy</span></div>
+                    <div className="s-text-level s-easy_color"><span>Very Easy</span></div>
                 </div>
             );
         }else if(props.level === 'easy'){

@@ -19,8 +19,6 @@ const ProductList = () => {
     const level = !query.indexOf(notGenderQuery + "?level=") ? query.split(`${notGenderQuery}?level=`)[1] : "";
     const price = !query.indexOf(notGenderQuery + "?price=") ? Number(query.split(`${notGenderQuery}?price=`)[1]) : "";
 
-    console.log(price);
-
     useEffect(() => {
         dispatch(fetchProducts(gender, category, level, price))
     },[query, dispatch]);
@@ -37,8 +35,8 @@ const ProductList = () => {
                 {filters.map(filter => (
                     <ProductCard
                     key={filter.id} id={filter.id} name={filter.name}
-                    images={filter.images} price={filter.price}    
-                />
+                    images={filter.images} price={filter.price}
+                    />
                 ))}
             </div>
         </section>
