@@ -17,7 +17,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { push } from 'connected-react-router';
 import { signOut } from '../../redux/users/operations';
 import { fetchKeyword } from '../../redux/products/operations';
-import { db } from '../../firebase/index';
 import { AddSelectDrawer } from './index';
 
 const useStyles = makeStyles((theme) => ({
@@ -44,7 +43,9 @@ const ClosableDrawer = (props) => {
     const dispatch = useDispatch();
     const selector = useSelector((state) => state);
 
+    //現在のURLのを取得
     const query = selector.router.location.search;
+    console.log(query);
     const gender = !query.indexOf("?gender=") ? query.split('?gender=')[1].split('/?')[0] : "";
 
     const [keyword, setKeyword] = useState("");
