@@ -3,6 +3,7 @@ import { ProductCard } from '../components/Products';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../redux/products/operations';
 import { getProducts, getKeyword } from '../redux/products/selector';
+import { SearchList } from '../components/UIkit/index';
 
 const ProductList = () => {
     const dispatch = useDispatch();
@@ -31,6 +32,7 @@ const ProductList = () => {
 
     return(
         <section className="c-section-wrapin">
+            <SearchList gender={gender} category={category} level={level} price={price} />
             <div className="p-grid__row">
                 {filters.map(filter => (
                     <ProductCard

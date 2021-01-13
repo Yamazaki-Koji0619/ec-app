@@ -81,7 +81,7 @@ const ClosableDrawer = (props) => {
 
     useEffect(() => {
         dispatch(fetchKeyword(keyword))
-    },[keyword])
+    },[keyword, dispatch])
 
     return(
         <nav className={classes.drawer}>
